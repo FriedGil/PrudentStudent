@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
+  import { Lucia } from "lucia-sveltekit/client";
   import "../app.css";
 </script>
 
-<slot />
+<Lucia>
+  <slot />
+</Lucia>
