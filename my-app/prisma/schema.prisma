@@ -8,18 +8,35 @@ datasource db {
 }
 
 model User {
-  id               String           @id @unique
-  identifier_token String           @unique
+  id               String         @id @default(cuid())
+  identifier_token String         @unique
   hashed_password  String?
+  classes          ClassMember[]
   // TODO: add actual attributes
   RefreshToken     RefreshToken[]
+
   @@map("user")
+}
+
+model Class {
+  id       String        @id
+  name     String
+  students ClassMember[]
+}
+
+model ClassMember {
+  userId  String
+  classId String
+  user    User   @relation(fields: [userId], references: [id])
+  class   Class  @relation(fields: [classId], references: [id])
+
+  @@id([userId, classId])
 }
 
 model RefreshToken {
   id            Int    @id @unique @default(autoincrement())
   refresh_token String @unique @db.VarChar(300)
-  user          User  @relation(references: [id], fields: [user_id], onDelete: Cascade)
+  user          User   @relation(references: [id], fields: [user_id], onDelete: Cascade)
   user_id       String
 
   @@index([user_id])
