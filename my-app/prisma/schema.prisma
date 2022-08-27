@@ -31,7 +31,7 @@ model RefreshToken {
 }
 
 model Class {
-  id          String        @id
+  id          String        @id @default(cuid())
   name        String
   students    ClassMember[]
   assignments Assignment[]
