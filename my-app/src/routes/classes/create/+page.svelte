@@ -1,8 +1,14 @@
 <script lang="ts">
-	const create = async (e: SubmitEvent) => {
+  export let errors: Record<string, any>;
+
+  import type { LayoutServerData } from ".svelte-kit/types/src/routes/$types"
+  export let data: LayoutServerData
+
+  const create = async (e: SubmitEvent) => {
 		const form = e.target as HTMLFormElement;
 		form.submit();
 	};
+  console.log(data)
 </script>
 <div class="hero min-h-screen bg-base-200 flex justify-center px-20">
     
@@ -15,15 +21,15 @@
 			<div class="card-body">
 				<form on:submit|preventDefault={create} action="/classes/create" method="post">
 					<div class="form-control mb-4">
-						<label class="label" for="email">
+						<label class="label" for="class_name">
 							<span class="label-text">Class Name</span>
 						</label>
 						<input
 							type="text"
-							id="email"
-							name="email"
+							id="class_name"
+							name="class_name"
               autocomplete="off"
-							placeholder="Type here"
+							placeholder="Class"
 							class="input input-bordered input-primary w-full max-w-xs"
 						/>
 					</div>
@@ -31,6 +37,7 @@
 						<button type="submit" class="btn btn-primary">Create</button>
 					</div>
 				</form>
+				<p class="text-red-600">{errors?.message || ''}</p>
 			</div>
 		</div>
     </div>
