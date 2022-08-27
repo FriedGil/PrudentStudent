@@ -1,0 +1,15 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+
+<script>
+  qna.load().then(model => {
+    question = "Who are you?"
+    passage = "You are an AI assistant developed by using mobilebert and symblai"
+    model.findAnswers(question, passage).then(answers => {
+      console.log(question)
+      console.log('Answer: ', answers[0].text);
+    });
+  });
+</script>
