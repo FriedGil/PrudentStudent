@@ -1,3 +1,3 @@
 interface ImportMetaEnv {
-  SECRET: string;
+  VITE_SECRET: string;
 }
