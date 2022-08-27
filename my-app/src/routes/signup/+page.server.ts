@@ -24,7 +24,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 		});
 		setHeaders({ 'set-cookie': createUser.cookies });
 		return {
-			location: '/'
+			location: '/login'
 		};
 	} catch (e) {
 		const error = e as Error;

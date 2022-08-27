@@ -6,7 +6,7 @@
 <Lucia>
 	<div class="navbar bg-primary text-primary-content">
 		<div class="dropdown">
-			<label tabindex="0" class="btn btn-ghost btn-circle">
+			<div tabindex="0" class="btn btn-ghost btn-circle">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-5 w-5"
@@ -20,7 +20,7 @@
 						d="M4 6h16M4 12h16M4 18h7"
 					/></svg
 				>
-			</label>
+      </div>
 			<ul
 				tabindex="0"
 				class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary  rounded-box w-52"

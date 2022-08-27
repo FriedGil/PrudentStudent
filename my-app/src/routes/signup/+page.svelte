@@ -17,7 +17,7 @@
 		<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 			<div class="card-body">
 				<form on:submit|preventDefault={signup} action="/signup" method="post">
-					<div class="form-control">
+					<div class="form-control mb-4">
 						<label class="label" for="email">
 							<span class="label-text">Email</span>
 						</label>
@@ -25,6 +25,7 @@
 							type="text"
 							id="email"
 							name="email"
+              autocomplete="off"
 							placeholder="Type here"
 							class="input input-ghost w-full max-w-xs"
 							bind:value={email}
