@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit';
 import { PrismaClient } from '@prisma/client';
 
-/** @type {import('./$types').PageServerLoad} */
-export async function load({ params }) {
+// /** @type {import('./$types').PageServerLoad} */
+/* export async function load({ params }) {
     const post = await getPostFromDatabase(params.slug);
 
     if (post) {
@@ -10,4 +10,4 @@ export async function load({ params }) {
     }
 
     throw error(404, 'Not found');
-}
+} */

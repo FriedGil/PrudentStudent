@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Icon, Home, ViewList, Logout } from "svelte-hero-icons";
+  import { Icon, Home, ViewList, Logout, AcademicCap } from "svelte-hero-icons";
   import { signOut } from "lucia-sveltekit/client";
   import type { LayoutServerData } from ".svelte-kit/types/src/routes/$types"
 
@@ -42,6 +42,7 @@
       <li><a href="/">Home <Icon src="{Home}" size="20" class="ml-auto inline" /> </a> </li>
       <li><a href="/about">About <Icon src="{ViewList}" size="20" class="ml-auto inline" /></a></li>
       {#if userData.user !== null}
+        <li><a href="/classes">Classes <Icon src="{AcademicCap}" size="20" class="ml-auto linline" /></a></li>
         <li><a on:click={signOutUser}>Log out <Icon src="{Logout}" size="20" class="ml-auto inline" /></a></li>
       {/if}
     </ul>
