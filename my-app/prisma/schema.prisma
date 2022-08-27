@@ -20,21 +20,6 @@ model User {
   @@map("user")
 }
 
-model Class {
-  id       String        @id
-  name     String
-  students ClassMember[]
-}
-
-model ClassMember {
-  userId  String
-  classId String
-  user    User   @relation(fields: [userId], references: [id])
-  class   Class  @relation(fields: [classId], references: [id])
-
-  @@id([userId, classId])
-}
-
 model RefreshToken {
   id            Int    @id @unique @default(autoincrement())
   refresh_token String @unique @db.VarChar(300)
@@ -43,4 +28,50 @@ model RefreshToken {
 
   @@index([user_id])
   @@map("refresh_token")
+}
+
+model Class {
+  id          String        @id
+  name        String
+  students    ClassMember[]
+  assignments Assignment[]
+}
+
+model ClassMember {
+  userId     String       @unique
+  classId    String
+  user       User         @relation(fields: [userId], references: [id])
+  class      Class        @relation(fields: [classId], references: [id])
+  status     MemberStatus
+  Submission Submission[]
+
+  @@id([userId, classId])
+}
+
+model Assignment {
+  id          String       @id
+  name        String
+  classId     String
+  class       Class        @relation(fields: [classId], references: [id])
+  submissions Submission[]
+}
+
+model Submission {
+  id           String           @id
+  assignmentId String
+  studentId    String
+  student      ClassMember      @relation(fields: [studentId], references: [userId])
+  assignment   Assignment       @relation(fields: [assignmentId], references: [id])
+  status       SubmissionStatus
+  grade        Int?
+}
+
+enum SubmissionStatus {
+  COMPLETED
+  INCOMPLETED
+}
+
+enum MemberStatus {
+  STUDENT
+  TEACHER
 }
