@@ -25,7 +25,10 @@ async function get_audio(){
    if (data.type === 'message_response') {
      for (let message of data.messages) {
        console.log('Transcript (more accurate): ', message.payload.content);
-       entry_zone.value = (message.payload.content);
+       result = message.payload.content;
+       result = result.toLowerCase();
+       result = result.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+       entry_zone.value = (result);
      }
    }
    //Boilerplate for accessing symbl api
