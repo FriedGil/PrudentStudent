@@ -6,4 +6,4 @@
         <a href="/signup"><button class="btn btn-primary">Get Started</button></a>
       </div>
     </div>
-  </div>
+</div>
