@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Lucia } from 'lucia-sveltekit/client';
 	import '../app.css';
+  import { Icon, Home, ViewList, Logout } from "svelte-hero-icons";
 </script>
 
 <Lucia>
@@ -25,10 +26,9 @@
 				tabindex="0"
 				class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary  rounded-box w-52"
 			>
-				<li><a href="/">Home</a></li>
-				<li><a href="/signup">Signup</a></li>
-				<li><a href="/login">Login</a></li>
-				<li><a href="/about">About</a></li>
+				<li><a href="/">Home <Icon src="{Home}" size="20" class="ml-auto inline" /> </a> </li>
+				<li><a href="/about">About <Icon src="{ViewList}" size="20" class="ml-auto inline" /></a></li>
+        <li><a href="/about">Log out <Icon src="{Logout}" size="20" class="ml-auto inline" /></a></li>
 			</ul>
 		</div>
 	</div>
