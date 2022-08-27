@@ -11,7 +11,6 @@
 <h1 class="text-5xl font-bold bg-base-200 text-center pt-6">Classes</h1>
 
 <div class="hero min-h-screen bg-base-200">
-    
     <div class="grid grid-cols-4 gap-4">
         {#each classes as school_class}
             <div class="card w-96 bg-base-100 shadow-xl">
