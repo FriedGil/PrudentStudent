@@ -6,12 +6,22 @@
 
   const create = async (e: SubmitEvent) => {
 		const form = e.target as HTMLFormElement;
-		form.submit();
+		const formData = new FormData(form)
+		const class_name = formData.get("class_name")
+		const user_id = data.user?.id;
+		await fetch("/classes/create", {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			redirect: "follow",
+			body: JSON.stringify({
+				class_name: class_name,
+				user_id: user_id
+			})
+		})
 	};
-  console.log(data)
 </script>
+
 <div class="hero min-h-screen bg-base-200 flex justify-center px-20">
-    
 	<div class="hero-content flex-col lg:flex-row">
 		<div class="ml-6 text-center lg:text-left">
 			<h1 class="text-5xl font-bold">Create your own class!</h1>
@@ -28,7 +38,7 @@
 							type="text"
 							id="class_name"
 							name="class_name"
-              autocomplete="off"
+							autocomplete="off"
 							placeholder="Class"
 							class="input input-bordered input-primary w-full max-w-xs"
 						/>
@@ -40,5 +50,5 @@
 				<p class="text-red-600">{errors?.message || ''}</p>
 			</div>
 		</div>
-    </div>
+	</div>
 </div>

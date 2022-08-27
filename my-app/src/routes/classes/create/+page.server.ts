@@ -1,10 +1,17 @@
+import type { Action } from './$types';
+import { auth } from "$lib/lucia";
 import { prismaClient } from "$lib/prisma";
 import { MemberStatus } from "@prisma/client";
-import type { Action } from './$types';
+
+interface RequestObject {
+    class_name: string,
+    user_id: string
+}
 
 export const POST: Action = async ({ request, setHeaders }) => {
-    const form = await request.formData();
-    const class_name = form.get("class_name");
+    const json: RequestObject = await request.json();
+    const class_name = json.class_name;
+    const user_id = json.user_id;
 	if (!class_name || typeof class_name !== 'string') {
 		return {
 			errors: {
@@ -13,12 +20,13 @@ export const POST: Action = async ({ request, setHeaders }) => {
 			}
 		};
 	}
-    prismaClient.class.create({
+    await prismaClient.class.create({
         data: {
             name: class_name,
             students: {
                 create: [
                     {
+                        userId: user_id,
                         status: MemberStatus.TEACHER,
                     }
                 ]
