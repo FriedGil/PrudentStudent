@@ -1,5 +1,21 @@
 <script lang="ts">
   import { Icon, Home, ViewList, Logout } from "svelte-hero-icons";
+  import { signOut } from "lucia-sveltekit/client";
+  import type { LayoutServerData } from ".svelte-kit/types/src/routes/$types"
+
+  export let userData: LayoutServerData;
+
+  const signOutUser = () => {
+    try {
+      signOut().then(() => {
+        window.location.replace("/"); // lucia moment
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
 </script>
 
 <div class="navbar bg-primary text-primary-content">
@@ -25,7 +41,9 @@
     >
       <li><a href="/">Home <Icon src="{Home}" size="20" class="ml-auto inline" /> </a> </li>
       <li><a href="/about">About <Icon src="{ViewList}" size="20" class="ml-auto inline" /></a></li>
-      <li><a href="/about">Log out <Icon src="{Logout}" size="20" class="ml-auto inline" /></a></li>
+      {#if userData.user !== null}
+        <li><a on:click={signOutUser}>Log out <Icon src="{Logout}" size="20" class="ml-auto inline" /></a></li>
+      {/if}
     </ul>
   </div>
 </div>
