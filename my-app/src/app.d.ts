@@ -1,3 +1,5 @@
+import type { User } from "@prisma/client";
+
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 // and what to do when importing types
@@ -7,8 +9,11 @@ declare namespace App {
 	// interface Platform {}
 	// interface PrivateEnv {}
 	// interface PublicEnv {}
+  interface Session {
+    lucia:
+        | import("lucia-sveltekit/types").SvelteKitSession<
+              Omit<User, "id" | "identifier_token" | "hashed_password">
+          >
+        | null;
 }
-
-declare namespace Lucia {
-  interface UserData {}
 }

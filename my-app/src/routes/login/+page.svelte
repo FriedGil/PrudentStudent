@@ -5,6 +5,11 @@
 		const form = e.target as HTMLFormElement;
 		form.submit();
 	};
+  import type { LayoutServerData } from "../$types"
+
+  export let data: LayoutServerData
+  console.log(data)
+
 </script>
 
 <div class="hero min-h-screen bg-base-200 flex justify-center px-20">
@@ -46,7 +51,7 @@
 				</form>
 				<p class="text-red-600">{errors?.message || ''}</p>
 			</div>
-      
+
 		</div>
     <div class="ml-6 text-center lg:text-left">
 			<h1 class="text-5xl font-bold">Log in!</h1>
