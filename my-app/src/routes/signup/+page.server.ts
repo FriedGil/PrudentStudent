@@ -27,21 +27,24 @@ export const POST: Action = async ({ request, setHeaders }) => {
 			location: '/'
 		};
 	} catch (e) {
-    const error = e as Error;
-    if (error.message === 'AUTH_DUPLICATE_IDENTIFIER_TOKEN' || error.message === 'AUTH_DUPLICATE_USER_DATA') {
-      return {
-        errors: {
-          username: 'Username is taken',
-          message: ''
-        }
-      }
-    }
-    return {
-      status: 500,
-      errors: {
-        message: 'Unknown error',
-        username: ''
-      }
-    }
-  }
+		const error = e as Error;
+		if (
+			error.message === 'AUTH_DUPLICATE_IDENTIFIER_TOKEN' ||
+			error.message === 'AUTH_DUPLICATE_USER_DATA'
+		) {
+			return {
+				errors: {
+					username: 'Username is taken',
+					message: ''
+				}
+			};
+		}
+		return {
+			status: 500,
+			errors: {
+				message: 'Unknown error',
+				username: ''
+			}
+		};
+	}
 };
