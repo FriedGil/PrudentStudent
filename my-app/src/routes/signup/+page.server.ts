@@ -5,9 +5,9 @@ export const load = auth.load;
 
 export const POST: Action = async ({ request, setHeaders }) => {
 	const form = await request.formData();
-	const username = form.get('username');
+	const email = form.get('email');
 	const password = form.get('password');
-	if (!username || !password || typeof username !== 'string' || typeof password !== 'string') {
+	if (!email || !password || typeof email !== 'string' || typeof password !== 'string') {
 		return {
 			errors: {
 				message: 'Invalid Input',
@@ -16,10 +16,10 @@ export const POST: Action = async ({ request, setHeaders }) => {
 		};
 	}
 	try {
-		const createUser = await auth.createUser('username', username, {
+		const createUser = await auth.createUser('email', email, {
 			password,
 			user_data: {
-				username
+				email
 			}
 		});
 		setHeaders({ 'set-cookie': createUser.cookies });
@@ -34,7 +34,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 		) {
 			return {
 				errors: {
-					username: 'Username is taken',
+					username: 'Email is already used',
 					message: ''
 				}
 			};

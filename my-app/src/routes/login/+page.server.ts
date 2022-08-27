@@ -3,10 +3,10 @@ import { auth } from '$lib/lucia';
 
 export const POST: Action = async ({ request, setHeaders }) => {
 	const form = await request.formData();
-	const username = form.get('username');
+	const email = form.get('email');
 	const password = form.get('password');
 
-	if (!username || !password || typeof username !== 'string' || typeof password !== 'string') {
+	if (!email || !password || typeof email !== 'string' || typeof password !== 'string') {
 		return {
 			errors: {
 				message: 'Invalid input'
@@ -15,7 +15,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 	}
 
 	try {
-		const authenticateUser = await auth.authenticateUser('username', username, password);
+		const authenticateUser = await auth.authenticateUser('email', email, password);
 		setHeaders({ 'set-cookie': authenticateUser.cookies });
 		return {
 			location: '/'
@@ -28,7 +28,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 		) {
 			return {
 				errors: {
-					message: 'Incorrect username or password'
+					message: 'Incorrect email or password'
 				}
 			};
 		}
