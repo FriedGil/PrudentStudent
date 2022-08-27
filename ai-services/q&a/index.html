@@ -5,8 +5,10 @@
 
 <script>
   qna.load().then(model => {
-    question = "Who are you?"
-    passage = "You are an AI assistant developed by using mobilebert and symblai"
+    question = "What can you do?"
+    passage = `Your name is Pru. You are an AI assistant developed by using mobilebert and symblai. You can answer questions and navigate around the website.
+    Prudent Student is an academic administration tool developed during Ignition Hacks 2022. 
+    `
     model.findAnswers(question, passage).then(answers => {
       console.log(question)
       console.log('Answer: ', answers[0].text);
