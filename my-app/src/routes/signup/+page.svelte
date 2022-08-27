@@ -7,9 +7,9 @@
 	};
 </script>
 
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen bg-base-200 flex px-20">
 	<div class="hero-content flex-col lg:flex-row-reverse">
-		<div class="text-center lg:text-left">
+		<div class="ml-6 text-center lg:text-left">
 			<h1 class="text-5xl font-bold">Sign Up!</h1>
 			<p class="py-6">Sign up now to join our revolution against the edutech establishment.</p>
 		</div>
