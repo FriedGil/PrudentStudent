@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+  	import type { PageServerData } from "./$types"
 	//Replace with classes query for user
 	let classes = [
 		{ name: 'Algebra 2', teacher: 'Gil Friedman', route: 'abcd' },
@@ -7,6 +8,11 @@
 		{ name: 'English 12', teacher: 'Gil Friedman', route: 'abcd' },
 		{ name: 'English 13', teacher: 'Gil Friedman', route: 'abcd' }
 	];
+	export let data: PageServerData;
+	console.log(data);
+	data.classes.forEach(clas => {
+		classes.push({ name: clas.name, teacher: clas.students[0].user.name, route: 'abcd'})
+	});
 </script>
 
 <div class=" bg-base-200">
