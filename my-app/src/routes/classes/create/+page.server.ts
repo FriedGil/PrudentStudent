@@ -2,6 +2,7 @@ import type { Action } from './$types';
 import { auth } from '$lib/lucia';
 import { prismaClient } from '$lib/prisma';
 import { MemberStatus } from '@prisma/client';
+import { nanoid } from 'nanoid';
 
 interface RequestObject {
 	class_name: string;
@@ -23,6 +24,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 	await prismaClient.class.create({
 		data: {
 			name: class_name,
+      invite_id: nanoid(7),
 			students: {
 				create: [
 					{

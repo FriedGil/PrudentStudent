@@ -1,17 +1,18 @@
 <script lang="ts">
   	import type { PageServerData } from "./$types"
+
+	interface ClassCard {
+		name: string,
+		teacher: string,
+		route: string
+	}
+
 	//Replace with classes query for user
-	let classes = [
-		{ name: 'Algebra 2', teacher: 'Gil Friedman', route: 'abcd' },
-		{ name: 'English 10', teacher: 'Gil Friedman', route: 'abcd' },
-		{ name: 'English 11', teacher: 'Gil Friedman', route: 'abcd' },
-		{ name: 'English 12', teacher: 'Gil Friedman', route: 'abcd' },
-		{ name: 'English 13', teacher: 'Gil Friedman', route: 'abcd' }
-	];
+	let classes: ClassCard[] = [];
 	export let data: PageServerData;
 	console.log(data);
 	data.classes.forEach(clas => {
-		classes.push({ name: clas.name, teacher: clas.students[0].user.name, route: 'abcd'})
+		classes.push({ name: clas.name, teacher: clas.students[0].user.name!, route: 'abcd'})
 	});
 </script>
 
