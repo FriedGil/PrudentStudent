@@ -11,7 +11,7 @@
 	let classes: ClassCard[] = [];
 	export let data: PageServerData;
 	console.log(data);
-	data.classes.forEach(clas => {
+	data.classes?.forEach(clas => {
 		classes.push({ name: clas.name, teacher: clas.students[0].user.name!, route: 'abcd'})
 	});
 </script>
@@ -19,7 +19,7 @@
 <div class=" bg-base-200">
 	<h1 class="text-5xl font-bold bg-base-200 text-center pt-16">Classes</h1>
 
-	<a href="/classes/create"><button class="btn ml-16 mt-12 text-2xl">+</button></a>
+	<a href="/classes/join"><button class="btn ml-16 mt-12 text-2xl">+</button></a>
 
 	<div class=" min-h-screen">
 		<div class="grid grid-cols-4 gap-4 mt-16 px-16">

@@ -22,7 +22,7 @@
 				user_id: user_id
 			})
 		});
-		console.log(response);
+
 		if (response.ok) {
 			class_name_field = '';
 			submitted = true;
@@ -38,39 +38,42 @@
 	</div>
 {/if}
 <div class="hero min-h-screen bg-base-200 flex justify-center px-20">
-  <div class="p-4 mr-4 inline-block">
-    <a href="/classes">
-      <Icon src={ArrowLeft} size="25" />
-    </a>
-  </div>
+	<div class="p-4 mr-4 inline-block">
+		<a href="/classes">
+			<Icon src={ArrowLeft} size="25" />
+		</a>
+	</div>
 	<div class="hero-content flex-col lg:flex-row">
-		<div class="ml-6 text-center lg:text-left">
-			<h1 class="text-5xl font-bold">Create your own class!</h1>
-			<p class="py-6">Lead your own merry band of students to enlightenment.</p>
-		</div>
 		<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 			<div class="card-body">
 				<form on:submit|preventDefault={create} action="/classes/create" method="post">
 					<div class="form-control mb-4">
 						<label class="label" for="class_name">
-							<span class="label-text">Class Name</span>
+							<span class="label-text">Invite code</span>
 						</label>
 						<input
 							type="text"
 							id="class_name"
 							name="class_name"
 							autocomplete="off"
-							placeholder="Class"
+							placeholder="Invite ID"
 							class="input input-bordered input-primary w-full max-w-xs"
 							bind:value={class_name_field}
 						/>
 					</div>
 					<div class="form-control mt-6 mb-4">
-						<button type="submit" class="btn btn-primary">Create</button>
+						<button type="submit" class="btn btn-primary">Join</button>
 					</div>
 				</form>
 				<p class="text-red-600">{errors?.message || ''}</p>
 			</div>
+		</div>
+		<div class="ml-6 text-center lg:text-left">
+			<h1 class="text-5xl font-bold">Join a class!</h1>
+			<p class="py-6 mb-2">Join a class with your fellow peers and collaborate together!</p>
+			<p class="text-sm">
+				Want to create a class? Click <a class="text-purple-500" href="/classes/create">here!</a>
+			</p>
 		</div>
 	</div>
 </div>
