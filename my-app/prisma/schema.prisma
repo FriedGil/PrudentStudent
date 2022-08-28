@@ -51,11 +51,12 @@ model ClassMember {
 }
 
 model Post {
-  id    String  @id
-  title String
-  desc  String?
-  classId String @unique
-  class   Class  @relation(fields: [classId], references: [id])
+  id           String        @id
+  title        String
+  desc         String?
+  classId      String        @unique
+  class        Class         @relation(fields: [classId], references: [id])
+  postType     PostType
   announcement Announcement?
   assignment   Assignment?
 }
@@ -100,4 +101,9 @@ enum SubmissionStatus {
 enum MemberStatus {
   STUDENT
   TEACHER
+}
+
+enum PostType {
+  ANNOUNCEMENT
+  ASSIGNMENT
 }
