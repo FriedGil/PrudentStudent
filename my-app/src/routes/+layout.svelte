@@ -13,8 +13,8 @@
 <Lucia>
   <Nav userData={data} />
 	<slot />
-  <Footer />
   <Pru />
+  <Footer />
   
 </Lucia>
 
