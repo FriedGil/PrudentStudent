@@ -31,6 +31,7 @@ export const load: PageServerLoad = async ({ request, url, params }) => {
   })
 
   return {
+    user_id: id,
     course_data: course
   };
 };

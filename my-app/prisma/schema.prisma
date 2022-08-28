@@ -31,12 +31,13 @@ model RefreshToken {
 }
 
 model Class {
-  id          String        @id @default(cuid())
-  name        String
-  desc        String?
-  students    ClassMember[]
-  assignments Assignment[]
-  invite_id   String      @unique
+  id            String         @id @default(cuid())
+  name          String
+  desc          String?
+  students      ClassMember[]
+  announcements Announcement[]
+  assignments   Assignment[]
+  invite_id     String         @unique
 }
 
 model ClassMember {
@@ -50,12 +51,22 @@ model ClassMember {
   @@id([userId, classId])
 }
 
+model Announcement {
+  id        String   @id
+  title     String
+  desc      String
+  classId   String
+  createdAt DateTime @default(now())
+  class     Class    @relation(fields: [classId], references: [id])
+}
+
 model Assignment {
   id          String       @id
   name        String
   desc        String?
   classId     String
   class       Class        @relation(fields: [classId], references: [id])
+  createdAt   DateTime     @default(now())
   submissions Submission[]
 }
 
@@ -68,7 +79,7 @@ model Submission {
   assignment   Assignment       @relation(fields: [assignmentId], references: [id])
   status       SubmissionStatus
 
-  grade        Int?
+  grade Int?
 }
 
 enum SubmissionStatus {
