@@ -1,14 +1,27 @@
+<script lang="ts">
+	import type { PageServerData } from './$types';
+
+	export let data: PageServerData;
+	console.log(data)
+</script>
+
 <div class="bg-base-200">
-	<div class="container mx-auto">
-		<div class="bg-base-200 p-8 flex justify-center">
-			<img
-				src="https://assets.weforum.org/article/image/large_fhmECszKQviVxia50gCOWPGxi-GKqITRk7sYoMHa7hw.jpg"
-			/>
+	<div class="container mx-auto px-32">
+		<div class="card image-full p-8 flex justify-center">
+			<figure>
+				<img
+					src="https://assets.weforum.org/article/image/large_fhmECszKQviVxia50gCOWPGxi-GKqITRk7sYoMHa7hw.jpg"
+					alt="classroom"
+				/>
+			</figure>
+			<div class="card-body">
+				<h1 class="card-title text-4xl">{data.course_data?.name}</h1>
+			</div>
 		</div>
 		<div class="bg-base-200 p-2 pb-8 flex justify-center">
 			<div class="card bg-base-100 shadow-xl">
 				<div class="card-body">
-					<h2 class="card-title">Christopher Ziegler</h2>
+					<h2 class="card-title mb-8">Christopher Ziegler</h2>
 					<p>
 						Hi all! See 2 documents attached to this announcement: PowerPoint presentation
 						(information about the exam, what to bring, etc) and Room assignments. Each room has the

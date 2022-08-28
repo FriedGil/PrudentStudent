@@ -12,7 +12,7 @@
 	export let data: PageServerData;
 	console.log(data.classes);
 	data.classes?.forEach(clas => {
-		classes.push({ name: clas.name, teacher: clas.students[0].user.name!, route: 'abcd'})
+		classes.push({ name: clas.name, teacher: clas.students[0].user.name!, route: clas.id})
 	});
 </script>
 

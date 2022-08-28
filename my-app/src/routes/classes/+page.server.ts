@@ -18,6 +18,7 @@ export const load: PageServerLoad = async ({ request }) => {
 			},
 			select: {
 				name: true,
+				id: true,
 				students: {
 					where: {
 						status: MemberStatus.TEACHER
