@@ -29,7 +29,7 @@
 						<h2 class="card-title">{school_class.name}</h2>
 						<h2 class="card-subtitle">{school_class.teacher}</h2>
 						<div class="card-actions justify-end">
-							<a href="/{school_class.route}"><button class="btn btn-primary">Open</button></a>
+							<a href="/classes/{school_class.route}"><button class="btn btn-primary">Open</button></a>
 						</div>
 					</div>
 				</div>
