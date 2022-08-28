@@ -33,6 +33,7 @@ model RefreshToken {
 model Class {
   id          String        @id @default(cuid())
   name        String
+  desc        String?
   students    ClassMember[]
   assignments Assignment[]
   invite_id   String      @unique
@@ -66,7 +67,7 @@ model Submission {
   student      ClassMember      @relation(fields: [studentId, classId], references: [userId, classId])
   assignment   Assignment       @relation(fields: [assignmentId], references: [id])
   status       SubmissionStatus
-  
+
   grade        Int?
 }
 

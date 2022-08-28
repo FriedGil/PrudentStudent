@@ -2,7 +2,8 @@
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
-	console.log(data)
+	let selectedTab = 'dash';
+	// console.log(data)
 </script>
 
 <div class="bg-base-200">
@@ -17,6 +18,26 @@
 			<div class="card-body">
 				<h1 class="card-title text-4xl">{data.course_data?.name}</h1>
 			</div>
+		</div>
+		<div class="tabs my-4 flex items-center justify-center text-lg">
+			<a
+				class={`tab tab-bordered ${selectedTab === 'dash' ? 'tab-active' : ''}`}
+				on:click={() => {
+					selectedTab = 'dash';
+				}}>Dashboard</a
+			>
+			<a
+				class={`tab tab-bordered ${selectedTab === 'people' ? 'tab-active' : ''}`}
+				on:click={() => {
+					selectedTab = 'people';
+				}}>People</a
+			>
+			<a
+				class={`tab tab-bordered ${selectedTab === 'settings' ? 'tab-active' : ''}`}
+				on:click={() => {
+					selectedTab = 'settings';
+				}}>Settings</a
+			>
 		</div>
 		<div class="bg-base-200 p-2 pb-8 flex justify-center">
 			<div class="card bg-base-100 shadow-xl">
