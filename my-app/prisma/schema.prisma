@@ -51,7 +51,7 @@ model ClassMember {
 }
 
 model Post {
-  id          String       @id
+  id          String       @id @default(cuid())
   title       String
   desc        String?
   classId     String       @unique

@@ -1,14 +1,16 @@
 <script lang="ts">
 	import Dashboard from '$lib/components/class/Dashboard.svelte';
 	import { MemberStatus } from '@prisma/client';
+  import type { ClassMember } from "@prisma/client";
 
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
 	let selectedTab = 'dash';
 	const teacher = data.course_data?.students
-		.filter((student) => student.status === MemberStatus.TEACHER)
+		.filter((student: ClassMember) => student.status === MemberStatus.TEACHER)
 		.at(0);
+  const classId = data?.course_data?.id as string;
 	// console.log(data)
 </script>
 
@@ -49,7 +51,7 @@
 			>
 		</div>
 		<div class="bg-base-200 p-2 pb-8 flex justify-center">
-			<Dashboard />
+			<Dashboard classId={classId} />
 		</div>
 	</div>
 </div>
