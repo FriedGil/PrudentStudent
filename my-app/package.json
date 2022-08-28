@@ -33,6 +33,7 @@
 		"daisyui": "^2.24.0",
 		"esbuild": "^0.15.5",
 		"lucia-sveltekit": "^0.7.1",
+		"nanoid": "^4.0.0",
 		"prettier": "^2.7.1",
 		"svelte-hero-icons": "^4.1.3"
 	}

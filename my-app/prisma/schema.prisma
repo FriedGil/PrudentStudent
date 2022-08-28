@@ -35,6 +35,7 @@ model Class {
   name        String
   students    ClassMember[]
   assignments Assignment[]
+  invite_id   String
 }
 
 model ClassMember {
@@ -46,7 +47,6 @@ model ClassMember {
   Submission Submission[]
 
   @@id([userId, classId])
-  @@unique([userId, classId])
 }
 
 model Assignment {
