@@ -5,7 +5,8 @@ import '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-cpu';
 import '@tensorflow/tfjs-backend-webgl';
 
-let text_value = `text here`;
+let text_value = `query here`;
+let answer_value = 'result here';
 
 async function get_audio(){
     const accessToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFVUTRNemhDUVVWQk1rTkJNemszUTBNMlFVVTRRekkyUmpWQ056VTJRelUxUTBVeE5EZzFNUSJ9.eyJodHRwczovL3BsYXRmb3JtLnN5bWJsLmFpL3VzZXJJZCI6IjQ1MDQ0MzAzMzQ5Njc4MDgiLCJpc3MiOiJodHRwczovL2RpcmVjdC1wbGF0Zm9ybS5hdXRoMC5jb20vIiwic3ViIjoiNElWYzBiUWthZWNoYXB6bjR4YkllZWRNaEd3S2pxVU9AY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcGxhdGZvcm0ucmFtbWVyLmFpIiwiaWF0IjoxNjYxNjA1ODEyLCJleHAiOjE2NjE2OTIyMTIsImF6cCI6IjRJVmMwYlFrYWVjaGFwem40eGJJZWVkTWhHd0tqcVVPIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.p7GM_RI-FqSSSgoRgFwI6q8d2w9TXACvx7zY-1Jf1XPPc7DQWd3kHa1Om7NQk2rNx98DAFPt1o4l-iix02KMv_QZlAVR_2ntQFGU8TOwWmqqTnwzYBMyJn3vpO4d2IDKU-xe0haly1OeElvh4pzy83Yy7IaKn3tJ0epmzLu4tAhEqBP-Xbgf07KiM3x8OqaUFf76tG32XdeXupx6wZHLlR5SEhiH5hE1ae-NibZZ2xeRJiL3ex1--FTeAr0bbwHPfy5WvIKMR_x-K1_qvEAH8ZmfczClQlXZX1zKdCOuFcn7siMjmlJPTgUHnGro7-ME-fiyJIdVV_f4DR_2ullBWQ";
@@ -124,6 +125,7 @@ async function execute(text){
             break;
         default:
             console.log("defaulting");
+            answer_value = await answerq(text).then();
             console.log(answerq(text));
 
 } 
@@ -141,7 +143,10 @@ async function execute(text){
             <button on:click|self="{get_audio}" class="btn">Audio Record</button>
             <button class="btn" id="btnStop">End Recording</button>
             <button on:click|self="{execute(text_value)}" class="btn" id="btnStop">Submit</button>
-            <textarea bind:value={text_value}></textarea>
+            
+            <textarea class="textarea" bind:value={text_value}></textarea>
+            <textarea class="textarea" bind:value={answer_value} disabled></textarea>
+
         </body>
     </label>
 </label>
