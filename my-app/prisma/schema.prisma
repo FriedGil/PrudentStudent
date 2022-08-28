@@ -52,6 +52,7 @@ model ClassMember {
 model Assignment {
   id          String       @id
   name        String
+  desc        String?
   classId     String
   class       Class        @relation(fields: [classId], references: [id])
   submissions Submission[]
@@ -65,6 +66,7 @@ model Submission {
   student      ClassMember      @relation(fields: [studentId, classId], references: [userId, classId])
   assignment   Assignment       @relation(fields: [assignmentId], references: [id])
   status       SubmissionStatus
+  
   grade        Int?
 }
 
