@@ -10,7 +10,7 @@
 	//Replace with classes query for user
 	let classes: ClassCard[] = [];
 	export let data: PageServerData;
-	console.log(data);
+	console.log(data.classes);
 	data.classes?.forEach(clas => {
 		classes.push({ name: clas.name, teacher: clas.students[0].user.name!, route: 'abcd'})
 	});
