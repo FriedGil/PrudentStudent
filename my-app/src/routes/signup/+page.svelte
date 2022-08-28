@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let errors: { email: string; message: string };
-	let email: string, password: string;
+	let email: string, password: string, name: string;
 	const signup = async (e: SubmitEvent) => {
 		const form = e.target as HTMLFormElement;
 		form.submit();
@@ -29,6 +29,20 @@
 							placeholder="Type here"
 							class="input input-ghost w-full max-w-xs"
 							bind:value={email}
+						/>
+					</div>
+          <div class="form-control mb-4">
+						<label class="label" for="name">
+							<span class="label-text">Name</span>
+						</label>
+						<input
+							type="text"
+							id="name"
+							name="name"
+              autocomplete="off"
+							placeholder="Type here"
+							class="input input-ghost w-full max-w-xs"
+							bind:value={name}
 						/>
 					</div>
 					<div class="form-control">
