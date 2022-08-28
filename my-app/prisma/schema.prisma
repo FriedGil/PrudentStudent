@@ -51,33 +51,12 @@ model ClassMember {
 }
 
 model Post {
-  id           String        @id
-  title        String
-  desc         String?
-  classId      String        @unique
-  class        Class         @relation(fields: [classId], references: [id])
-  postType     PostType
-  announcement Announcement?
-  assignment   Assignment?
-}
-
-model Announcement {
-  id        String   @id
-  title     String
-  desc      String
-  createdAt DateTime @default(now())
-  postId    String   @unique
-  post      Post     @relation(fields: [postId], references: [id])
-  classId   String?
-}
-
-model Assignment {
   id          String       @id
-  name        String
+  title       String
   desc        String?
-  createdAt   DateTime     @default(now())
-  postId      String       @unique
-  post        Post         @relation(fields: [postId], references: [id])
+  classId     String       @unique
+  class       Class        @relation(fields: [classId], references: [id])
+  postType    PostType
   submissions Submission[]
 }
 
@@ -87,7 +66,7 @@ model Submission {
   studentId    String
   classId      String
   student      ClassMember      @relation(fields: [studentId, classId], references: [userId, classId])
-  assignment   Assignment       @relation(fields: [assignmentId], references: [id])
+  assignment   Post             @relation(fields: [assignmentId], references: [id])
   status       SubmissionStatus
 
   grade Int?
