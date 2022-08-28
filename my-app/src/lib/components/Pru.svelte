@@ -155,6 +155,8 @@ async function execute(text){
             <button on:click|self="{get_audio}" class="btn">Audio On</button>
             <button class="btn" id="btnStop">Audio Off</button>
             <button on:click|self="{execute(text_value)}" class="btn" id="btnStop">Query</button>
+            <br>
+            <br>
             <textarea class="textarea" bind:value={text_value}></textarea>
             <textarea class="textarea" bind:value={top_result} disabled></textarea>
             <div class="divider"></div>
