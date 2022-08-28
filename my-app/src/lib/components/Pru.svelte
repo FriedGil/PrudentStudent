@@ -125,7 +125,7 @@ async function execute(text){
             break;
         default:
             console.log("defaulting");
-            answer_value = await answerq(text).then();
+            answer_value = await answerq(text);
             console.log(answerq(text));
 
 } 
