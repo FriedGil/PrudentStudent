@@ -32,6 +32,8 @@ import { ArrowRight, Icon } from 'svelte-hero-icons';
 		if (data.error) {
 			error = data.error;
 		}
+		// assuming no error
+		posts = [...posts, data.post]
 	};
 </script>
 
