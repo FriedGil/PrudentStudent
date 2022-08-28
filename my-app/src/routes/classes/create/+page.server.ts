@@ -1,17 +1,17 @@
 import type { Action } from './$types';
-import { auth } from "$lib/lucia";
-import { prismaClient } from "$lib/prisma";
-import { MemberStatus } from "@prisma/client";
+import { auth } from '$lib/lucia';
+import { prismaClient } from '$lib/prisma';
+import { MemberStatus } from '@prisma/client';
 
 interface RequestObject {
-    class_name: string,
-    user_id: string
+	class_name: string;
+	user_id: string;
 }
 
 export const POST: Action = async ({ request, setHeaders }) => {
-    const json: RequestObject = await request.json();
-    const class_name = json.class_name;
-    const user_id = json.user_id;
+	const json: RequestObject = await request.json();
+	const class_name = json.class_name;
+	const user_id = json.user_id;
 	if (!class_name || typeof class_name !== 'string') {
 		return {
 			errors: {
@@ -20,21 +20,22 @@ export const POST: Action = async ({ request, setHeaders }) => {
 			}
 		};
 	}
-    await prismaClient.class.create({
-        data: {
-            name: class_name,
-            students: {
-                create: [
-                    {
-                        userId: user_id,
-                        status: MemberStatus.TEACHER,
-                    }
-                ]
-            }
-        }
-    })
+	await prismaClient.class.create({
+		data: {
+			name: class_name,
+			students: {
+				create: [
+					{
+						userId: user_id,
+						status: MemberStatus.TEACHER
+					}
+				]
+			}
+		}
+	});
 
-    return {
-        location: "/classes"
-    }
-}
+	// doesn't work but doesnt matter :D
+	return {
+		location: '/classes'
+	};
+};

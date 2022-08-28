@@ -1,5 +1,7 @@
 import { error } from '@sveltejs/kit';
-import { PrismaClient } from '@prisma/client';
+import { prismaClient } from '$lib/prisma';
+import type { PageServerLoad } from './$types';
+import { MemberStatus } from '@prisma/client';
 
 // /** @type {import('./$types').PageServerLoad} */
 /* export async function load({ params }) {
@@ -11,3 +13,25 @@ import { PrismaClient } from '@prisma/client';
 
     throw error(404, 'Not found');
 } */
+
+export const load: PageServerLoad = async () => {
+    const classes = prismaClient.class.findMany({
+        select: {
+            name: true,
+            students: {
+                where: {
+                    status: MemberStatus.TEACHER
+                },
+                select: {
+                    user: {
+                        select: {
+                            name: true
+                        }
+                    }
+                }
+            }
+        }
+    });
+    return { success: true, classes }
+    
+}
