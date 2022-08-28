@@ -7,7 +7,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 	const form = await request.formData();
 	const email = form.get('email');
 	const password = form.get('password');
-  const name = form.get('name');
+	const name = form.get('name');
 
 	if (!email || !password || typeof email !== 'string' || typeof password !== 'string') {
 		return {
@@ -22,7 +22,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 			password,
 			user_data: {
 				email,
-        name
+				name
 			}
 		});
 		setHeaders({ 'set-cookie': createUser.cookies });

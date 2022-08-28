@@ -24,7 +24,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 	await prismaClient.class.create({
 		data: {
 			name: class_name,
-      invite_id: nanoid(7),
+			invite_id: nanoid(7),
 			students: {
 				create: [
 					{
