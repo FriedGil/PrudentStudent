@@ -15,7 +15,7 @@ import { MemberStatus } from '@prisma/client';
 } */
 
 export const load: PageServerLoad = async () => {
-    const classes = prismaClient.class.findMany({
+    const classes = await prismaClient.class.findMany({
         select: {
             name: true,
             students: {
@@ -33,5 +33,5 @@ export const load: PageServerLoad = async () => {
         }
     });
     return { success: true, classes }
-    
+
 }
