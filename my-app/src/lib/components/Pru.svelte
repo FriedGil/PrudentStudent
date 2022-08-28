@@ -5,10 +5,19 @@ import '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-cpu';
 import '@tensorflow/tfjs-backend-webgl';
 import bird from '$lib/assets/bird.png';
+import { onMount } from 'svelte'
+import { themeChange } from 'theme-change'
 
+onMount(() => {
+  themeChange(false)
+})
 
 let text_value = `query here`;
 let top_result = 'result here';
+
+ function switch_color(){
+document.getElementById('cswitch').click();
+}
 
 async function get_audio(){
     const accessToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFVUTRNemhDUVVWQk1rTkJNemszUTBNMlFVVTRRekkyUmpWQ056VTJRelUxUTBVeE5EZzFNUSJ9.eyJodHRwczovL3BsYXRmb3JtLnN5bWJsLmFpL3VzZXJJZCI6IjQ1MDQ0MzAzMzQ5Njc4MDgiLCJpc3MiOiJodHRwczovL2RpcmVjdC1wbGF0Zm9ybS5hdXRoMC5jb20vIiwic3ViIjoiNElWYzBiUWthZWNoYXB6bjR4YkllZWRNaEd3S2pxVU9AY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcGxhdGZvcm0ucmFtbWVyLmFpIiwiaWF0IjoxNjYxNjA1ODEyLCJleHAiOjE2NjE2OTIyMTIsImF6cCI6IjRJVmMwYlFrYWVjaGFwem40eGJJZWVkTWhHd0tqcVVPIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.p7GM_RI-FqSSSgoRgFwI6q8d2w9TXACvx7zY-1Jf1XPPc7DQWd3kHa1Om7NQk2rNx98DAFPt1o4l-iix02KMv_QZlAVR_2ntQFGU8TOwWmqqTnwzYBMyJn3vpO4d2IDKU-xe0haly1OeElvh4pzy83Yy7IaKn3tJ0epmzLu4tAhEqBP-Xbgf07KiM3x8OqaUFf76tG32XdeXupx6wZHLlR5SEhiH5hE1ae-NibZZ2xeRJiL3ex1--FTeAr0bbwHPfy5WvIKMR_x-K1_qvEAH8ZmfczClQlXZX1zKdCOuFcn7siMjmlJPTgUHnGro7-ME-fiyJIdVV_f4DR_2ullBWQ";
@@ -120,10 +129,9 @@ async function execute(text){
             else if (words.includes("refresh") || words.includes("reload") ){
             document.location.reload(); 
             }
-            else if (words.includes("dark")){
-
-            }
-            else if (words.includes("light")){
+            else if ((words.includes("dark")) || (words.includes("light"))) {
+                console.log("here")
+                switch_color();
 
             }
             break;
@@ -161,3 +169,5 @@ async function execute(text){
         </body>
     </label>
 </label>
+
+<button id = "cswitch" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS"></button>
