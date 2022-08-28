@@ -38,7 +38,7 @@ model Class {
 }
 
 model ClassMember {
-  userId     String       @unique
+  userId     String
   classId    String
   user       User         @relation(fields: [userId], references: [id])
   class      Class        @relation(fields: [classId], references: [id])
@@ -46,6 +46,7 @@ model ClassMember {
   Submission Submission[]
 
   @@id([userId, classId])
+  @@unique([userId, classId])
 }
 
 model Assignment {
@@ -60,7 +61,8 @@ model Submission {
   id           String           @id
   assignmentId String
   studentId    String
-  student      ClassMember      @relation(fields: [studentId], references: [userId])
+  classId      String
+  student      ClassMember      @relation(fields: [studentId, classId], references: [userId, classId])
   assignment   Assignment       @relation(fields: [assignmentId], references: [id])
   status       SubmissionStatus
   grade        Int?
