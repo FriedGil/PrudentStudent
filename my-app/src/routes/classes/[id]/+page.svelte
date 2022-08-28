@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { MemberStatus } from '@prisma/client';
+
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
@@ -17,6 +19,7 @@
 			</figure>
 			<div class="card-body">
 				<h1 class="card-title text-4xl">{data.course_data?.name}</h1>
+        <h2 class="card-title text-xl">{data.course_data?.students.filter((student) => student.status === MemberStatus.TEACHER).at(0)?.user.name}</h2>
 			</div>
 		</div>
 		<div class="tabs my-4 flex items-center justify-center text-lg">
