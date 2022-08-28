@@ -10,7 +10,7 @@
 	//Replace with classes query for user
 	let classes: ClassCard[] = [];
 	export let data: PageServerData;
-	console.log(data);
+	console.log(data.classes);
 	data.classes?.forEach(clas => {
 		classes.push({ name: clas.name, teacher: clas.students[0].user.name!, route: 'abcd'})
 	});
@@ -29,7 +29,7 @@
 						<h2 class="card-title">{school_class.name}</h2>
 						<h2 class="card-subtitle">{school_class.teacher}</h2>
 						<div class="card-actions justify-end">
-							<a href="/{school_class.route}"><button class="btn btn-primary">Open</button></a>
+							<a href="/classes/{school_class.route}"><button class="btn btn-primary">Open</button></a>
 						</div>
 					</div>
 				</div>
