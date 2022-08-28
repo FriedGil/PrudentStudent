@@ -21,12 +21,14 @@ export const load: PageServerLoad = async ({ request, url, params }) => {
           status: true,
           user: {
             select: {
+              id: true,
               name: true
             }
           }
         }
       },
-      assignments: true
+      assignments: true,
+      announcements: true
     }
   })
 
