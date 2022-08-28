@@ -11,6 +11,7 @@
 		.at(0);
 
 	const posts = data?.course_data?.posts as Post[];
+	const classId = data?.course_data?.id as string;
 </script>
 
 <div class="bg-base-200">
@@ -51,7 +52,7 @@
 		</div>
 
 		<div class="bg-base-200 p-2 pb-8 flex justify-center">
-			<Dashboard {posts} />
+			<Dashboard {classId} {posts} />
 		</div>
 	</div>
 </div>

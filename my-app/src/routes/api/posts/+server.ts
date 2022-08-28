@@ -3,16 +3,17 @@ import { prismaClient } from '$lib/prisma';
 import { PostType } from '@prisma/client';
 
 export const POST: RequestHandler = async ({ request }) => {
-	const { classId } = await request.json();
+  const { classId, formPostTitle, formPostDesc, formPostType } = await request.json();
+  if (!formPostTitle || !formPostDesc || !formPostType) return new Response(JSON.stringify({ error: "Invalid input" }), { status: 500 })
 
-	const posts = await prismaClient.post.create({
-		data: {
-			title: 'bee',
-			desc: 'balls',
-			classId: classId,
-			postType: PostType.ANNOUNCEMENT
-		}
-	});
+  const post = await prismaClient.post.create({
+    data: {
+      classId: classId,
+      title: formPostTitle,
+      desc: formPostDesc,
+      postType: formPostType === "announcement" ? PostType.ANNOUNCEMENT : PostType.ASSIGNMENT
+    }
+  });
 
-	return new Response(JSON.stringify({ post: posts }), { status: 200 });
+  return new Response(JSON.stringify({ post }), { status: 200 });
 };
