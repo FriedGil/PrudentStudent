@@ -97,6 +97,9 @@ function answerq(question)
 qna.load().then(model => {
     let passage = `Your name is Pru. You are an AI assistant developed by using both mobilebert and symblai. You can answer questions and navigate around the website.
     Prudent Student is an academic administration tool developed during Ignition Hacks 2022. Prudent Student is made special by its advanced tooling, clean UI, and functionality.
+    Despite an increasing shift towards using web technology for student administration, what's wrong with existing technologies is that they are either bloated, outdated, backed by morally reprehensive big tech companies, or all three.
+    Prudent Student, built during Ignition Hacks 2022, is a smart student administration platform that balances functionality, speed, and ease of use.
+
     `
     model.findAnswers(question, passage).then(answers => {
         top_result = answers[0].text;
@@ -170,4 +173,4 @@ async function execute(text){
     </label>
 </label>
 
-<button id = "cswitch" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS"></button>
+<button id = "cswitch" data-toggle-theme="light,dark" data-act-class="ACTIVECLASS"></button>

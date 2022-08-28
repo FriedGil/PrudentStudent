@@ -3,7 +3,7 @@
     <div class="hero-content text-center text-neutral-content">
       <div class="max-w-md">
         <h1 class="mb-5 text-5xl font-bold">About Us</h1>
-        <p class="mb-5">Despite an increasing shift towards using web technology for student administration, existing technologies are either bloated, outdaded, backed by morally reprehensive big tech companies, or all three.</p>
+        <p class="mb-5">Despite an increasing shift towards using web technology for student administration, existing technologies are either bloated, outdated, backed by morally reprehensive big tech companies, or all three.</p>
         <p class="mb-5">Prudent Student, built during Ignition Hacks 2022, is a smart student administration platform that balances functionality, speed, and ease of use.</p>
         </div>
     </div>
