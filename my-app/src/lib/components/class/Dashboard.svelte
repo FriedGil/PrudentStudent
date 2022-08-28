@@ -4,6 +4,8 @@ import { ArrowRight, Icon } from 'svelte-hero-icons';
 	export let posts: Post[];
 	export let classId: string;
 
+	$: posts_reversed = posts.reverse();
+
 	// Create a post data
 	let postTitle: string;
 	let postDesc: string;
@@ -108,13 +110,13 @@ import { ArrowRight, Icon } from 'svelte-hero-icons';
 				</thead>
 				<tbody>
 					<!-- row 1 -->
-					{#each posts as class_post}
+					{#each posts_reversed as class_post}
           <tr>
 						<td class="">{class_post.title}</td>
 						<td>{class_post.desc?.substring(0, 40)}...</td>
 						<td>{class_post.postType}</td>
             <th>
-              <a href={`/post/${class_post.id}`}>
+              <a href={`/classes/posts/${class_post.id}`}>
                 <Icon src="{ArrowRight}" size="24" />
               </a>
             </th>
