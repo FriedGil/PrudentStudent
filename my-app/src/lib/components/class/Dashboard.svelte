@@ -1,9 +1,10 @@
 <script lang="ts">
-  // export let DashboardData;
-  // export let isTeacher;
+  import { onMount } from "svelte";
 
-  // console.log(DashboardData)
-  // console.log(isTeacher)
+  let data;
+  onMount(async () => {
+    const response = await fetch('/api/dashboard')
+  })
 </script>
 
 <div class="card bg-base-100 shadow-xl">

@@ -14,8 +14,7 @@
   <Nav userData={data} />
 	<slot />
   <Pru />
-  <Footer />
-  
+  <Footer /> 
 </Lucia>
 
 

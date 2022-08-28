@@ -27,8 +27,7 @@ export const load: PageServerLoad = async ({ request, url, params }) => {
           }
         }
       },
-      assignments: true,
-      announcements: true
+      posts: true
     }
   })
 

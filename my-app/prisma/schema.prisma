@@ -31,13 +31,12 @@ model RefreshToken {
 }
 
 model Class {
-  id            String         @id @default(cuid())
-  name          String
-  desc          String?
-  students      ClassMember[]
-  announcements Announcement[]
-  assignments   Assignment[]
-  invite_id     String         @unique
+  id        String        @id @default(cuid())
+  name      String
+  desc      String?
+  students  ClassMember[]
+  posts     Post[]
+  invite_id String        @unique
 }
 
 model ClassMember {
@@ -51,22 +50,33 @@ model ClassMember {
   @@id([userId, classId])
 }
 
+model Post {
+  id    String  @id
+  title String
+  desc  String?
+  classId String @unique
+  class   Class  @relation(fields: [classId], references: [id])
+  announcement Announcement?
+  assignment   Assignment?
+}
+
 model Announcement {
   id        String   @id
   title     String
   desc      String
-  classId   String
   createdAt DateTime @default(now())
-  class     Class    @relation(fields: [classId], references: [id])
+  postId    String   @unique
+  post      Post     @relation(fields: [postId], references: [id])
+  classId   String?
 }
 
 model Assignment {
   id          String       @id
   name        String
   desc        String?
-  classId     String
-  class       Class        @relation(fields: [classId], references: [id])
   createdAt   DateTime     @default(now())
+  postId      String       @unique
+  post        Post         @relation(fields: [postId], references: [id])
   submissions Submission[]
 }
 
