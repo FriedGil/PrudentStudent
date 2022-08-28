@@ -1,5 +1,10 @@
 <script>
-// @ts-nocheck
+//// @ts-nocheck
+import * as qna from '@tensorflow-models/qna';
+import '@tensorflow/tfjs-core';
+import '@tensorflow/tfjs-backend-cpu';
+import '@tensorflow/tfjs-backend-webgl';
+
 let text_value = `text here`;
 
 async function get_audio(){
@@ -74,6 +79,20 @@ async function get_audio(){
     handleSuccess(stream);
 
 }
+
+async function answerq(question)
+{
+qna.load().then(model => {
+    let passage = `Your name is Pru. You are an AI assistant developed by using mobilebert and symblai. You can answer questions and navigate around the website.
+    Prudent Student is an academic administration tool developed during Ignition Hacks 2022. 
+    `
+    model.findAnswers(question, passage).then(answers => {
+      console.log(question)
+      console.log('Answer: ', answers[0].text);
+    });
+  });
+}
+
 async function execute(text){
     var words = text.split(" ");
     switch(words[0]) {
@@ -82,10 +101,11 @@ async function execute(text){
             document.location.href="/";
             }
             else if (words.includes("classes")){
-            document.location.href=`${window.location.host}/classes`;
+            document.location.href=`/classes`;
             }
             else if (words.includes("about")){
-            document.location.href=`${window.location.host}/about`;
+                console.log("going to about")
+            document.location.href=`/about`;
             }
             break;
         case "action":
@@ -103,7 +123,8 @@ async function execute(text){
             }
             break;
         default:
-            return answerq(text);
+            console.log("defaulting");
+            console.log(answerq(text));
 
 } 
 }

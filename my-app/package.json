@@ -26,6 +26,10 @@
 	"dependencies": {
 		"@lucia-sveltekit/adapter-prisma": "^0.3.1",
 		"@prisma/client": "^4.2.1",
+		"@tensorflow-models/qna": "^1.0.1",
+		"@tensorflow/tfjs-backend-cpu": "^3.20.0",
+		"@tensorflow/tfjs-backend-webgl": "^3.20.0",
+		"@tensorflow/tfjs-core": "^3.20.0",
 		"daisyui": "^2.24.0",
 		"esbuild": "^0.15.5",
 		"lucia-sveltekit": "^0.7.1",
