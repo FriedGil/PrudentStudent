@@ -18,7 +18,7 @@ export const POST: Action = async ({ request, setHeaders }) => {
 		const authenticateUser = await auth.authenticateUser('email', email, password);
 		setHeaders({ 'set-cookie': authenticateUser.cookies });
 		return {
-			location: '/home'
+			location: '/classes'
 		};
 	} catch (e) {
 		const error = e as Error;
