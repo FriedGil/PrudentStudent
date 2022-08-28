@@ -54,7 +54,7 @@ model Post {
   id          String       @id @default(cuid())
   title       String
   desc        String?
-  classId     String       @unique
+  classId     String       
   class       Class        @relation(fields: [classId], references: [id])
   postType    PostType
   submissions Submission[]

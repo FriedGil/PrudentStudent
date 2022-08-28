@@ -1,25 +1,18 @@
 <script lang="ts">
 	import type { Post } from '@prisma/client';
-	import { onMount } from 'svelte';
+  export let posts: Post[];
 
-  export let classId: string;
-	let data: Post[] = [];
-	onMount(async () => {
-		const response = await fetch('/api/dashboard', {
-      method: 'POST',
-      body: JSON.stringify({
-        classId: classId
-      })
-    });
-    
-    let postData = await response.json();
-    data = [...postData.post];
-	});
-
-  console.log(data)
-
+  console.log(posts)
 </script>
 
+<button on:click={async () => {
+const response = await fetch('/api/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        classId: "classId"
+      })
+    });
+}}></button>
 <div class="card bg-base-100 shadow-xl">
 	<div class="card-body">
 		<h2 class="card-title mb-8">Christopher Ziegler</h2>
